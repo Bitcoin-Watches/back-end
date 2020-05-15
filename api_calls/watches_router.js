@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Watches = require("../database_calls/watches_model");
+
 router.get("/", (req, res) => {
   Watches.getAllWatches()
     .catch((err) => res.send(err))
@@ -7,6 +8,7 @@ router.get("/", (req, res) => {
       res.status(200).json(watches);
     });
 });
+
 router.get("/:id", (req, res) => {
   let { id } = req.params;
   Watches.findBy({ id })
@@ -23,4 +25,6 @@ router.get("/:id", (req, res) => {
       res.status(200).json(watches[0]);
     });
 });
+
+
 module.exports = router;
