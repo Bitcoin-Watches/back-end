@@ -1,14 +1,14 @@
 const db = require("../database/dbConfig");
 
 module.exports = {
-  getAll,
+  getAllAuctions,
   findBy,
-  add,
-  remove,
-  update
-}
+  addAuction,
+  removeAuction,
+  updateAuction,
+};
 
-function getAll() {
+function getAllAuctions() {
   return db("auction");
 }
 
@@ -16,14 +16,14 @@ function findBy(filter) {
   return db("auction").where(filter);
 }
 
-function add(newAuction) {
-  return db("auction").insert(newAuction)
+function addAuction(newAuction) {
+  return db("auction").insert(newAuction);
 }
 
-function remove(id) {
-  return db("auction").where({ id }).del()
+function removeAuction(id) {
+  return db("auction").where({ id }).del();
 }
 
-function update(changes, id) {
-  return db("auction").where({ id }).update(changes)
+function updateAuction(changes, id) {
+  return db("auction").where({ id }).update(changes);
 }
