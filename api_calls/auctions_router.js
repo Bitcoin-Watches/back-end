@@ -28,7 +28,7 @@ router.get("/:id", (req, res) => {
 
 router.post("/", async (req, res) => {
   const body = req.body;
-
+  console.log("body", body);
   try {
     const auctions = await Auctions.addAuction(body);
 
@@ -42,11 +42,10 @@ router.delete("/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    const deletedAuction = await Auctions.deleteAuction(id);
-    const editedAuctions = await Auctions.getAllAuctions();
+    const deletedAuction = await Auctions.removeAuction(id);
 
     if (deletedAuction) {
-      res.json(editedAuctions);
+      res.status(201).json({ removed: deletedAuction });
     } else {
       res
         .status(404)
@@ -62,11 +61,10 @@ router.put("/:id", async (req, res) => {
   const changes = req.body;
 
   try {
-    const auctionID = await Auctions.findBy(id);
+    const update = await Auctions.updateAuction(id, changes);
 
-    if (auctionID) {
-      const updatedAuction = await Auctions.updateAuction(changes, id);
-      res.status(200).json(updatedAuction);
+    if (update) {
+      res.status(201).json({ updateAuction: update });
     } else {
       res.status(404).json({ message: "Could not find auction with given ID" });
     }
