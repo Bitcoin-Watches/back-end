@@ -26,51 +26,53 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post('/', async (req,res) => {
-  const body = req.body
+router.post("/", async (req, res) => {
+  const body = req.body;
 
   try {
-    const watch = await Watches.addWatches(body)
+    const watch = await Watches.addWatches(body);
 
-    res.status(201).json(watch)
+    res.status(201).json(watch);
   } catch (error) {
-    res.status(500).json({ message: 'Failed to add watch' })
+    res.status(500).json({ message: "Failed to add watch" });
   }
-})
+});
 
-router.delete('/:id', async (req,res) => {
-  const { id } = req.params
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
 
   try {
-    const deleted = await Watches.deleteWatch(id)
-    const editedWatch = await Watches.getAllWatches()
+    const deleted = await Watches.deleteWatch(id);
+    const editedWatch = await Watches.getAllWatches();
 
     if (deleted) {
-      res.json(editedWatch)
+      res.json(editedWatch);
     } else {
-      res.status(404).json({ message: 'Could nto find the watch with the given ID' })
+      res
+        .status(404)
+        .json({ message: "Could not find the watch with the given ID" });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Failed to delete watch' })
+    res.status(500).json({ message: "Failed to delete watch" });
   }
-})
+});
 
-router.put('/:id', async (req,res) => {
-  const { id } = req.params
-  const changes = req.body
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
 
   try {
-    const watchID = await Watches.findBy(id)
+    const watchID = await Watches.findBy(id);
 
     if (watchID) {
-      const updatedWatch = await Watches.updateWatch(changes, id)
-      res.status(200).json(updatedWatch)
+      const updatedWatch = await Watches.updateWatch(changes, id);
+      res.status(200).json(updatedWatch);
     } else {
-      res.status(404).json({ message: 'Could not find watch with given ID'})
+      res.status(404).json({ message: "Could not find watch with given ID" });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Failed to update watch'})
+    res.status(500).json({ message: "Failed to update watch" });
   }
-})
+});
 
 module.exports = router;
