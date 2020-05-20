@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const Bids = require("../database_calls/users_model");
+const Bids = require("../database_calls/bids_model");
 
 router.get("/", (req, res) => {
-  Bids.getAllBidders()
+  Bids.getAllBids()
     .catch((err) => res.send(err))
     .then((bids) => {
       res.status(200).json(bids);
@@ -60,19 +60,30 @@ router.delete("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const changes = req.body;
-
   try {
-    const bidID = await Bids.findBy(id);
+    const update = await Bidders.updateBidder(id, changes);
 
-    if (bidID) {
-      const updatedBid = await Bids.updateBidder(changes, id);
-      res.status(200).json(updatedBid);
+    if (update) {
+      res.json({ updateBidder: update });
     } else {
-      res.status(404).json({ message: "Could not find bid with given ID" });
+      res.status(404).json({ message: "Could not find auction with given ID" });
     }
   } catch (error) {
-    res.status(500).json({ message: "Failed to update bid" });
+    res.status(500).json({ message: "Failed to update auction" });
   }
+
+  // try {
+  //   const bidID = await Bids.updateBidder(id);
+
+  //   if (bidID) {
+  //     const updatedBid = await Bids.updateBidder(changes, id);
+  //     res.status(200).json(updatedBid);
+  //   } else {
+  //     res.status(404).json({ message: "Could not find bid with given ID" });
+  //   }
+  // } catch (error) {
+  //   res.status(500).json({ message: "Failed to update bid" });
+  // }
 });
 
 module.exports = router;
