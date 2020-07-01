@@ -21,6 +21,7 @@ const limit = rateLimit({
 });
 
 server.use(helmet());
+server.use("/uploads", express.static("uploads"));
 server.use(express.json({ limit: "20kb" }));
 server.use(cors());
 server.use(xss());
@@ -30,6 +31,7 @@ server.use(express.json());
 //server.use("/api/", limit, Router);
 server.use("/", limit);
 server.use("/watches", watchesRouter);
+
 server.use("/bidders", biddersRouter);
 server.use("/bids", bidsRouter);
 server.use("/auctions", auctionsRouter);
