@@ -4,11 +4,11 @@ exports.seed = function (knex) {
   return knex("watches").insert([
     {
       id: 1,
-      contact: "satoshi@blockhain.com",
+      contact: "nakamoto@blockhain.com",
       is_loaded: "Unloaded",
       case_color: "Black",
       band_type: "Metal",
-      dial_face: "Shredded Fiat",
+      dial_face: "Binary",
       hand_type: "Black",
     },
     {
