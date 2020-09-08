@@ -2,7 +2,7 @@ exports.seed = function (knex) {
   // Deletes ALL existing entries
   // Inserts seed entries
   return knex("watches")
-    .delete()
+    .truncate()
     .insert([
       {
         id: 1,
