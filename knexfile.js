@@ -4,7 +4,7 @@ const localPg = {
   host: "localhost",
   database: "users",
   user: "York",
-  password: "baller"
+  password: "baller",
 };
 
 const productionDbConnection = process.env.DATABASE_URL || localPg;
@@ -43,29 +43,28 @@ module.exports = {
     connection: productionDbConnection,
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      directory: "./database/migrations"
+      directory: "./database/migrations",
     },
     seeds: {
-      directory: "./database/seeds"
-    }
-  }
-}
-  // production: {
-  //   client: "postgresql",
-  //   connection: {
-  //     database: "my_db",
-  //     user: "username",
-  //     password: "password",
-  //   },
-  //   pool: {
-  //     min: 2,
-  //     max: 10,
-  //   },
-  //   migrations: {
-  //     tableName: "knex_migrations",
-  //   },
-  // },
+      directory: "./database/seeds",
+    },
+  },
 };
+// production: {
+//   client: "postgresql",
+//   connection: {
+//     database: "my_db",
+//     user: "username",
+//     password: "password",
+//   },
+//   pool: {
+//     min: 2,
+//     max: 10,
+//   },
+//   migrations: {
+//     tableName: "knex_migrations",
+//   },
+// },
