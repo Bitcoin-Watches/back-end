@@ -72,19 +72,6 @@ router.put("/:id", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Failed to update bidder" });
   }
-
-  // try {
-  //   const watchID = await Watches.findBy(id);
-
-  //   if (watchID) {
-  //     const updatedWatch = await Watches.updateWatch(changes, id);
-  //     res.status(200).json(updatedWatch);
-  //   } else {
-  //     res.status(404).json({ message: "Could not find watch with given ID" });
-  //   }
-  // } catch (error) {
-  //   res.status(500).json({ message: "Failed to update watch" });
-  // }
 });
 
 module.exports = router;
