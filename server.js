@@ -21,8 +21,6 @@ server.use(cors());
 server.use(xss());
 server.use(express.json());
 
-//server.use("/api/auth", authRouter);
-//server.use("/api/", limit, Router);
 server.use("/", limit);
 server.use("/watches", watchesRouter);
 
