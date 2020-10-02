@@ -6,7 +6,7 @@ exports.seed = function (knex) {
     .insert([
       {
         id: 1,
-        contact: "nakamoto@blockhain.com",
+        contact: "nakamoto@blockchain.com",
         is_loaded: "Unloaded",
         case_color: "Black",
         band_type: "Metal",
@@ -15,7 +15,7 @@ exports.seed = function (knex) {
       },
       {
         id: 2,
-        contact: "satoshi@blockhain.com",
+        contact: "satoshi@blockchain.com",
         is_loaded: "Unloaded",
         case_color: "Chocolate",
         band_type: "Leather",
