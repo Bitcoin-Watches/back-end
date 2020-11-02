@@ -7,7 +7,8 @@ const localPg = {
   password: "baller",
 };
 
-const productionDbConnection = process.env.DATABASE_URL || localPg;
+const productionDbConnection =
+  process.env.HEROKU_POSTGRESQL_ONYX_URL || localPg;
 
 module.exports = {
   development: {
