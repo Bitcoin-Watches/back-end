@@ -2,7 +2,7 @@ exports.seed = function (knex) {
   // Deletes ALL existing entries
   // Inserts seed entries
   return knex("watches")
-    .truncate()
+    .del()
     .insert([
       {
         id: 1,
@@ -25,6 +25,15 @@ exports.seed = function (knex) {
       {
         id: 3,
         contact: "johndoe@email.com",
+        is_loaded: "Unloaded",
+        case_color: "Rainbow",
+        band_type: "Leather",
+        dial_face: "Blank",
+        hand_type: "Black",
+      },
+      {
+        id: 4,
+        contact: "janedoe@email.com",
         is_loaded: "Unloaded",
         case_color: "Rainbow",
         band_type: "Leather",
