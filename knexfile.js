@@ -8,7 +8,7 @@ const localPg = {
 };
 
 const productionDbConnection =
-  process.env.HEROKU_POSTGRESQL_ONYX_URL || localPg;
+  process.env.DATABASE_URL || localPg;
 
 module.exports = {
   development: {
